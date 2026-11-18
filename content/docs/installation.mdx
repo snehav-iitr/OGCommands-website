@@ -1,0 +1,45 @@
+---
+title: Installation
+description: Install OG⌘ Commands on macOS 14+.
+order: 2
+section: Start here
+---
+
+## Requirements
+
+- **macOS 14 Sonoma** or later
+- Apple silicon or Intel Mac (packaged builds follow the SwiftPM target architecture)
+
+## Public download
+
+When a GitHub Release artifact is published, use the [Download](/download) page. Until then, the download button stays disabled so we never point at a missing file.
+
+## Build from source (current path)
+
+From the repository root:
+
+```bash
+chmod +x scripts/package-app.sh
+./scripts/package-app.sh debug
+open "dist/OG Commands.app"
+```
+
+The script:
+
+1. Ensures ONNX Runtime is present (for `..removebg`)
+2. Builds the Swift package
+3. Creates `dist/OG Commands.app`
+4. **Ad-hoc signs** the bundle
+
+## First launch notes
+
+Ad-hoc signed apps may show a Gatekeeper warning. That does **not** mean the app is Developer ID signed or notarized. See [Download](/download) for the live disclosure.
+
+## Permissions you may be asked for
+
+| Permission | Why |
+|---|---|
+| **Automation → Finder** | Read the files you selected in Finder |
+| **Accessibility** (optional) | Typed `..command` capture while Finder is focused |
+
+You can manage these later in System Settings and in **Commands & Settings → General**.

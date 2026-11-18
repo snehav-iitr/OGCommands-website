@@ -1,0 +1,14 @@
+{
+  "version": "0.1.0",
+  "build": "1",
+  "releasedAt": null,
+  "downloadUrl": null,
+  "checksumSha256": null,
+  "filename": null,
+  "signingStatus": "ad-hoc",
+  "notes": [
+    "No public download artifact is published yet.",
+    "When a GitHub Release is ready, set downloadUrl and checksumSha256 here (or via NEXT_PUBLIC_MAC_DOWNLOAD_* env vars).",
+    "Current packaging script produces an ad-hoc signed .app only."
+  ]
+}

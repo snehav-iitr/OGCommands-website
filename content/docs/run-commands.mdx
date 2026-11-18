@@ -1,0 +1,33 @@
+---
+title: How to run commands
+description: Type an alias and press Return.
+order: 12
+section: Using OG⌘
+---
+
+## Aliases
+
+Every command has a primary alias starting with `..`:
+
+| Alias | Command |
+|---|---|
+| `..compress` | Compress Images |
+| `..resize` | Resize Images |
+| `..convert` | Convert Image Format |
+| `..crop` | Crop Images |
+| `..rotate` | Rotate Images |
+| `..pdf` | Images to PDF |
+| `..duplicate` | Find Duplicate Images |
+| `..gather` | Gather Files |
+| `..removebg` | Remove Background |
+
+You can also type a partial name and select from the list.
+
+## Execution flow
+
+1. Validate selection (supported types, minimum file counts)
+2. Show progress in the running phase
+3. Show results (success/failure per file)
+4. Optionally reveal outputs in Finder
+
+For `..removebg`, if the model is missing, OG⌘ asks permission before downloading — it never silently hits the network.

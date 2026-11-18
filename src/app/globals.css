@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink-950 text-mist-50 antialiased;
+  background-image:
+    radial-gradient(ellipse 70% 40% at 80% 0%, rgba(244, 63, 122, 0.08), transparent 50%),
+    radial-gradient(ellipse 50% 30% at 10% 20%, rgba(255, 255, 255, 0.03), transparent 45%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: rgba(244, 63, 122, 0.35);
+  color: white;
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .eyebrow {
+    @apply text-xs font-medium uppercase tracking-[0.18em] text-accent-soft;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-accent-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5 text-sm font-medium text-mist-50 transition hover:border-white/25 hover:bg-white/[0.06] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/40;
+  }
+
+  .btn-disabled {
+    @apply inline-flex cursor-not-allowed items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.02] px-5 py-2.5 text-sm font-medium text-mist-400;
+  }
+
+  .surface {
+    @apply rounded-2xl border border-white/[0.07] bg-ink-850/80 backdrop-blur;
+  }
+
+  .prose-docs {
+    @apply max-w-none text-[15px] leading-7 text-mist-100;
+  }
+
+  .prose-docs h2 {
+    @apply mb-3 mt-10 font-display text-2xl font-semibold tracking-tight text-white;
+  }
+
+  .prose-docs h3 {
+    @apply mb-2 mt-8 font-display text-lg font-semibold text-white;
+  }
+
+  .prose-docs p {
+    @apply mb-4 text-mist-300;
+  }
+
+  .prose-docs ul {
+    @apply mb-4 list-disc space-y-2 pl-5 text-mist-300;
+  }
+
+  .prose-docs ol {
+    @apply mb-4 list-decimal space-y-2 pl-5 text-mist-300;
+  }
+
+  .prose-docs code {
+    @apply rounded bg-white/10 px-1.5 py-0.5 font-mono text-[13px] text-accent-soft;
+  }
+
+  .prose-docs pre {
+    @apply mb-4 overflow-x-auto rounded-xl border border-white/10 bg-ink-900 p-4 font-mono text-[13px] text-mist-100;
+  }
+
+  .prose-docs a {
+    @apply text-accent-soft underline-offset-4 hover:underline;
+  }
+
+  .prose-docs strong {
+    @apply font-semibold text-white;
+  }
+}

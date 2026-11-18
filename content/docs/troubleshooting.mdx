@@ -1,0 +1,34 @@
+---
+title: Troubleshooting
+description: Common issues and fixes.
+order: 60
+section: Help
+---
+
+## Launcher opens but nothing happens on Return
+
+- Make sure the query is not empty.
+- Immediately after opening with ⌥Space, wait a moment — a short ignore window prevents accidental submits from the hotkey itself.
+- Confirm the command is **Enabled in launcher**.
+
+## “No files selected”
+
+- Select files in Finder first, or use the file picker fallback.
+- Check **Automation** permission for Finder.
+
+## Can’t type in the panel
+
+- Click the text field once if focus was stolen.
+- Avoid enabling competing global hotkeys for ⌥Space.
+
+## WebP convert fails
+
+WebP export uses **libwebp**. Rebuild with `./scripts/package-app.sh` so the dependency is linked.
+
+## ..removebg asks to download every time
+
+The model must pass SHA-256 verification. If the cache is corrupt, OG⌘ discards it and asks again. Approve download only on networks you trust.
+
+## Gatekeeper blocks the app
+
+Expected for **ad-hoc** builds. Prefer a published notarized release when available. Do not confuse this with a notarized Developer ID build unless the Download page says so.
