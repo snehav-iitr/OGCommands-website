@@ -2,7 +2,7 @@
   "version": "0.1.0",
   "build": "1",
   "releasedAt": "2026-11-18T16:10:00Z",
-  "downloadUrl": "https://github.com/snehav-iitr/CommandOS/releases/download/v0.1.0/OG-Commands-0.1.0-macos.zip",
+  "downloadUrl": "https://github.com/snehav-iitr/OGCommands-website/releases/download/v0.1.0/OG-Commands-0.1.0-macos.zip",
   "checksumSha256": "95d394a816857175e2d302613ff881a98f25a286d089ac66b8ca3afe2974040d",
   "filename": "OG-Commands-0.1.0-macos.zip",
   "signingStatus": "ad-hoc",
