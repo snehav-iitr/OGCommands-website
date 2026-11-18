@@ -12,11 +12,13 @@ section: Start here
 
 ## Public download
 
-When a GitHub Release artifact is published, use the [Download](/download) page. Until then, the download button stays disabled so we never point at a missing file.
+Use the [Download](/download) page for the hosted macOS zip (`OG-Commands-0.1.0-macos.zip`). That build is **ad-hoc signed only** (not Developer ID / not notarized). Requires **macOS 14 Sonoma** or later.
 
-## Build from source (current path)
+If Gatekeeper warns on first open: right-click the app → **Open**.
 
-From the repository root:
+## Build from source (optional)
+
+Maintainers can package from the private app repository:
 
 ```bash
 chmod +x scripts/package-app.sh

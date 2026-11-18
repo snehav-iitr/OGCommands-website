@@ -21,8 +21,9 @@ export default function DownloadPage() {
           macOS application
         </h1>
         <p className="mt-4 text-mist-300">
-          Public downloads appear here only when a real hosted artifact is configured. Windows is not
-          released.
+          {ready
+            ? "Hosted macOS build is available below. Ad-hoc signed only — not Developer ID / not notarized. Windows is not released."
+            : "Public downloads appear here only when a real hosted artifact is configured. Windows is not released."}
         </p>
       </div>
 
@@ -63,10 +64,14 @@ export default function DownloadPage() {
       </div>
 
       <section className="surface mt-8 p-6 sm:p-8">
-        <h2 className="font-display text-xl font-semibold text-white">Install from a release (when available)</h2>
+        <h2 className="font-display text-xl font-semibold text-white">Install from this release</h2>
         <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm text-mist-300">
-          <li>Download the published .zip or .dmg from this page.</li>
-          <li>Open the app and move it to Applications if prompted.</li>
+          <li>Download the published .zip from this page.</li>
+          <li>Unzip, then open the app (or move it to Applications).</li>
+          <li>
+            If Gatekeeper warns, right-click the app → <strong className="text-white">Open</strong>{" "}
+            (ad-hoc signed builds are not notarized).
+          </li>
           <li>
             Grant Finder Automation when asked (needed to read Finder selection). Optional:
             Accessibility for typed <code className="text-accent-soft">..</code> capture in Finder.
@@ -78,9 +83,10 @@ export default function DownloadPage() {
       </section>
 
       <section className="surface mt-6 p-6 sm:p-8">
-        <h2 className="font-display text-xl font-semibold text-white">Build locally today</h2>
+        <h2 className="font-display text-xl font-semibold text-white">Build from source (optional)</h2>
         <p className="mt-3 text-sm text-mist-300">
-          Until a GitHub Release is published, package from the repository:
+          Prefer the hosted zip above for a normal install. Maintainers can still package locally from
+          the private app repository:
         </p>
         <pre className="mt-4 overflow-x-auto rounded-xl bg-ink-950 p-4 font-mono text-[13px] text-mist-100">{`chmod +x scripts/package-app.sh
 ./scripts/package-app.sh debug
