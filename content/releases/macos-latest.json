@@ -1,14 +1,14 @@
 {
   "version": "0.1.0",
   "build": "1",
-  "releasedAt": null,
-  "downloadUrl": null,
-  "checksumSha256": null,
-  "filename": null,
+  "releasedAt": "2026-11-18T16:10:00Z",
+  "downloadUrl": "https://github.com/snehav-iitr/CommandOS/releases/download/v0.1.0/OG-Commands-0.1.0-macos.zip",
+  "checksumSha256": "95d394a816857175e2d302613ff881a98f25a286d089ac66b8ca3afe2974040d",
+  "filename": "OG-Commands-0.1.0-macos.zip",
   "signingStatus": "ad-hoc",
   "notes": [
-    "No public download artifact is published yet.",
-    "When a GitHub Release is ready, set downloadUrl and checksumSha256 here (or via NEXT_PUBLIC_MAC_DOWNLOAD_* env vars).",
-    "Current packaging script produces an ad-hoc signed .app only."
+    "First hosted macOS build.",
+    "Requires macOS 14 Sonoma or later.",
+    "Ad-hoc signed only (not Developer ID / not notarized). Gatekeeper may warn on first open — right-click the app → Open."
   ]
 }
