@@ -7,6 +7,7 @@ const columns = [
     title: "Product",
     links: [
       { href: "/commands", label: "Commands" },
+      { href: "/pricing", label: "Pricing" },
       { href: "/download", label: "Download" },
       { href: "/changelog", label: "Changelog" },
     ],
@@ -24,6 +25,7 @@ const columns = [
     links: [
       { href: "/privacy", label: "Privacy" },
       { href: "/terms", label: "Terms" },
+      { href: "/refund", label: "Refunds" },
       { href: "/support", label: "Support" },
     ],
   },
@@ -31,8 +33,8 @@ const columns = [
 
 export function SiteFooter() {
   return (
-    <footer className="mt-24 border-t border-white/[0.06] bg-ink-900/50">
-      <div className="container-page grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+    <footer className="mt-24 border-t border-white/[0.06] bg-ink-900/40">
+      <div className="container-page grid gap-10 py-14 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
         <div>
           <Image
             src="/brand/OGLogo-White.png"
@@ -42,8 +44,8 @@ export function SiteFooter() {
             className="h-7 w-auto"
           />
           <p className="mt-4 max-w-sm text-sm leading-6 text-mist-400">
-            Native macOS commands for everyday file work. Local processing. Copies only.
-            Windows is planned — not available yet.
+            Everyday file work from one launcher. Select files, press {site.macos.hotkey}, run a
+            command—on your Mac.
           </p>
         </div>
         {columns.map((col) => (
@@ -64,8 +66,10 @@ export function SiteFooter() {
         ))}
       </div>
       <div className="container-page flex flex-col gap-2 border-t border-white/[0.06] py-6 text-xs text-mist-400 sm:flex-row sm:items-center sm:justify-between">
-        <p>© {new Date().getFullYear()} OG⌘ Commands</p>
-        <p>macOS {site.macos.version} · Ad-hoc signing until notarized builds ship</p>
+        <p>© 2026 {site.name}</p>
+        <p>
+          macOS {site.macos.version} · Requires {site.macos.minSystem}
+        </p>
       </div>
     </footer>
   );

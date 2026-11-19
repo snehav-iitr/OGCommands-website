@@ -38,11 +38,11 @@ export default function CommandsPage() {
     <div className="container-page py-16">
       <div className="max-w-2xl">
         <p className="eyebrow">Command library</p>
-        <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight text-white">
-          Every command that ships today
+        <h1 className="mt-3 font-display text-4xl tracking-tight text-white sm:text-5xl">
+          Everything you can run today
         </h1>
         <p className="mt-4 text-mist-300">
-          Documented from the live macOS registry and shared contracts — not a wishlist.
+          Search by name or alias. Each page lists settings, formats, and a short example.
         </p>
       </div>
 
@@ -53,7 +53,7 @@ export default function CommandsPage() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search ..crop, PDF, gather…"
-            className="w-full rounded-full border border-white/10 bg-ink-850 px-4 py-2.5 text-sm text-white outline-none ring-accent/40 placeholder:text-mist-400 focus:ring-2"
+            className="w-full rounded-xl border border-white/10 bg-ink-850 px-4 py-2.5 text-sm text-white outline-none ring-accent/40 placeholder:text-mist-400 focus:ring-2"
           />
         </label>
         <div className="flex flex-wrap gap-2">
@@ -64,8 +64,8 @@ export default function CommandsPage() {
               onClick={() => setCategory(key)}
               className={
                 category === key
-                  ? "rounded-full bg-accent px-3 py-1.5 text-xs font-semibold text-white"
-                  : "rounded-full border border-white/10 px-3 py-1.5 text-xs text-mist-300 hover:border-white/25"
+                  ? "rounded-lg bg-accent px-3 py-1.5 text-xs font-semibold text-white"
+                  : "rounded-lg border border-white/10 px-3 py-1.5 text-xs text-mist-300 hover:border-white/25"
               }
             >
               {key === "all" ? "All" : categoryLabels[key]}

@@ -1,9 +1,10 @@
 export const site = {
   name: "OG⌘ Commands",
   shortName: "OG Commands",
-  tagline: "Your everyday actions. One command away.",
+  brand: "OG⌘",
+  tagline: "Less clicking. More doing.",
   description:
-    "OG⌘ Commands is a native macOS productivity app. Select files in Finder, press ⌥Space, type a command like ..resize, and get copies — originals stay untouched.",
+    "Compress images, remove backgrounds, organize files, and more—without switching between apps. A native macOS command launcher for everyday file work.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   supportEmail: "support@ogcommands.app",
   githubReleasesEnv: "NEXT_PUBLIC_GITHUB_RELEASES_BASE",
@@ -16,5 +17,24 @@ export const site = {
     hotkey: "⌥Space",
     defaultOutput: "~/Downloads/OG Commands",
     signingStatus: "ad-hoc" as const,
+  },
+  pricing: {
+    amount: 19,
+    currency: "USD",
+    currencySymbol: "$",
+    label: "Founding license",
+    model: "one-time" as const,
+    /** Paid checkout is not integrated yet — keep download accessible. */
+    purchaseAvailable: false,
+    includes: [
+      "All current OG⌘ commands on macOS",
+      "Local file processing on your Mac",
+      "The purchased macOS app version",
+    ],
+    excludes: [
+      "Not a subscription",
+      "Does not promise lifetime updates",
+      "Does not include Windows",
+    ],
   },
 } as const;

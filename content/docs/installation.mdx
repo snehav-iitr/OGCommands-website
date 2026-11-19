@@ -8,13 +8,34 @@ section: Start here
 ## Requirements
 
 - **macOS 14 Sonoma** or later
-- Apple silicon or Intel Mac (packaged builds follow the SwiftPM target architecture)
+- Apple silicon or Intel Mac
 
-## Public download
+## Download the app
 
-Use the [Download](/download) page for the hosted macOS zip (`OG-Commands-0.1.0-macos.zip`). That build is **ad-hoc signed only** (not Developer ID / not notarized). Requires **macOS 14 Sonoma** or later.
+1. Open the [Download](/download) page.
+2. Download `OG-Commands-0.1.0-macos.zip`.
+3. Unzip the file.
+4. Open **OG Commands**.
+5. If macOS warns you, right-click the app → **Open**.
 
-If Gatekeeper warns on first open: right-click the app → **Open**.
+This build is **ad-hoc signed only** (not Developer ID / not notarized). See [Download](/download) for the SHA-256 and signing disclosure.
+
+## First launch
+
+1. Look for the OG⌘ icon in the menu bar.
+2. Select a few images in Finder.
+3. Press **⌥Space**.
+4. Type `..resize` and press **Return**.
+5. Find the copies in `~/Downloads/OG Commands` (default).
+
+## Permissions you may see
+
+| Permission | Why |
+|---|---|
+| **Automation → Finder** | Read the files you selected in Finder |
+| **Accessibility** (optional) | Typed `..command` capture while Finder is focused |
+
+You can change these later in System Settings and in **Commands & Settings → General**.
 
 ## Build from source (optional)
 
@@ -26,22 +47,4 @@ chmod +x scripts/package-app.sh
 open "dist/OG Commands.app"
 ```
 
-The script:
-
-1. Ensures ONNX Runtime is present (for `..removebg`)
-2. Builds the Swift package
-3. Creates `dist/OG Commands.app`
-4. **Ad-hoc signs** the bundle
-
-## First launch notes
-
-Ad-hoc signed apps may show a Gatekeeper warning. That does **not** mean the app is Developer ID signed or notarized. See [Download](/download) for the live disclosure.
-
-## Permissions you may be asked for
-
-| Permission | Why |
-|---|---|
-| **Automation → Finder** | Read the files you selected in Finder |
-| **Accessibility** (optional) | Typed `..command` capture while Finder is focused |
-
-You can manage these later in System Settings and in **Commands & Settings → General**.
+The script builds the Swift app, creates `dist/OG Commands.app`, and ad-hoc signs the bundle.

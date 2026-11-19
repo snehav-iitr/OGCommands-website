@@ -8,7 +8,7 @@ export function DownloadCTA({ compact = false }: { compact?: boolean }) {
   if (compact) {
     return ready ? (
       <a href={release.downloadUrl!} className="btn-primary">
-        Download for macOS
+        Download for Mac
       </a>
     ) : (
       <Link href="/download" className="btn-secondary">
@@ -20,9 +20,7 @@ export function DownloadCTA({ compact = false }: { compact?: boolean }) {
   return (
     <div className="surface p-6 sm:p-8">
       <p className="eyebrow">macOS</p>
-      <h3 className="mt-3 font-display text-2xl font-semibold text-white">
-        Download OG⌘ Commands
-      </h3>
+      <h3 className="mt-3 font-display text-3xl text-white">Download OG⌘ Commands</h3>
       <p className="mt-2 text-sm text-mist-300">
         Version {release.version} · Requires {release.minSystem}
       </p>
@@ -42,13 +40,6 @@ export function DownloadCTA({ compact = false }: { compact?: boolean }) {
           Installation guide
         </Link>
       </div>
-
-      {!ready ? (
-        <p className="mt-4 text-sm text-mist-400">
-          A public macOS build is not hosted yet. Use the local packaging script from the repository,
-          or check back when a GitHub Release is published. Windows is not available.
-        </p>
-      ) : null}
     </div>
   );
 }

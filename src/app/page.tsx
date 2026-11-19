@@ -1,205 +1,210 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CommandCard } from "@/components/CommandCard";
-import { DownloadCTA } from "@/components/DownloadCTA";
-import { commands } from "@/lib/commands";
+import { LauncherDemo } from "@/components/LauncherDemo";
+import { PricingCard } from "@/components/PricingCard";
+import { getMacRelease } from "@/lib/releases";
 import { site } from "@/lib/site";
 
 const steps = [
   {
-    title: "Select",
-    body: "Pick images or files in Finder — or use the file picker if nothing is selected.",
+    title: "Select files",
+    body: "Highlight images or files in Finder.",
+    visual: "/screenshots/settings-compress.jpg",
+    alt: "OG⌘ compress settings",
   },
   {
-    title: "Command",
-    body: "Press ⌥Space, type a command like ..resize or ..removebg, then Return.",
+    title: "Open OG⌘",
+    body: `Press ${site.macos.hotkey} to open the launcher.`,
+    visual: null,
+    alt: "",
   },
   {
-    title: "Done",
-    body: "Copies land in your output folder. Originals are never overwritten.",
+    title: "Run a command",
+    body: "Type an alias like ..resize and press Return.",
+    visual: "/screenshots/settings-library.jpg",
+    alt: "OG⌘ command library",
   },
 ];
 
-const benefits = [
+const categories = [
   {
-    title: "Native macOS",
-    body: "Swift menu-bar app — not Electron. Fast launcher with ⌥Space.",
+    title: "Image Tools",
+    body: "Compress, resize, crop, rotate, convert, and find duplicates.",
+    examples: ["..compress", "..resize", "..crop"],
   },
   {
-    title: "Copies only",
-    body: "Image commands write new files. Safety rules stay consistent across commands.",
+    title: "File Management",
+    body: "Gather selected files into one folder without moving originals.",
+    examples: ["..gather"],
   },
   {
-    title: "On-device privacy",
-    body: "Processing stays local. ..removebg downloads a model only after you approve.",
+    title: "PDFs",
+    body: "Combine selected images into a single PDF.",
+    examples: ["..pdf"],
   },
   {
-    title: "Real settings",
-    body: "Tune quality, formats, crop ratios, and more in Commands & Settings.",
+    title: "Background Removal",
+    body: "Remove backgrounds locally with an on-device model.",
+    examples: ["..removebg"],
   },
 ];
 
 export default function HomePage() {
-  const featured = commands.filter((c) => c.featured);
+  const release = getMacRelease();
+  const downloadHref = release.downloadUrl ?? "/download";
 
   return (
     <>
-      <section className="relative overflow-hidden bg-hero-radial pb-20 pt-16 sm:pt-24">
-        <div className="pointer-events-none absolute inset-0 bg-grid-fade bg-[size:48px_48px] opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
-        <div className="container-page relative grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="animate-fade-up">
-            <p className="eyebrow">OG⌘ · Native macOS</p>
-            <h1 className="mt-5 max-w-xl font-display text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]">
+      {/* 1. Hero */}
+      <section className="relative overflow-hidden bg-hero-wash pb-16 pt-14 sm:pb-24 sm:pt-20">
+        <div className="container-page">
+          <div className="mx-auto max-w-3xl text-center animate-fade-up">
+            <p className="font-display text-4xl tracking-tight text-white sm:text-5xl">
+              {site.brand}
+            </p>
+            <h1 className="mt-5 font-display text-4xl leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">
               {site.tagline}
             </h1>
-            <p className="mt-6 max-w-lg text-base leading-7 text-mist-300 sm:text-lg">
-              Select files in Finder. Open the launcher with <strong className="text-white">⌥Space</strong>.
-              Type <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-sm text-accent-soft">..compress</code>,{" "}
-              <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-sm text-accent-soft">..pdf</code>, or{" "}
-              <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-sm text-accent-soft">..removebg</code>.
-              Get results without leaving your flow.
+            <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-mist-300 sm:text-lg">
+              Compress images, remove backgrounds, organize files, and more—without switching
+              between apps.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/download" className="btn-primary">
-                Download for macOS
-              </Link>
-              <Link href="/commands" className="btn-secondary">
-                Browse commands
-              </Link>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <a href={downloadHref} className="btn-primary">
+                Download for Mac
+              </a>
+              <a href="#how-it-works" className="btn-secondary">
+                See how it works
+              </a>
             </div>
             <p className="mt-4 text-xs text-mist-400">
-              Requires {site.macos.minSystem}. Windows not released. No fake stats — just the product that ships.
+              Requires {site.macos.minSystem}. macOS only for now.
             </p>
           </div>
 
-          <div className="animate-fade-up relative" style={{ animationDelay: "120ms" }}>
-            <div className="absolute -inset-6 rounded-[2rem] bg-accent/10 blur-3xl" />
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-panel">
-              <Image
-                src="/screenshots/settings-library.jpg"
-                alt="OG Commands Settings showing the command library"
-                width={1400}
-                height={900}
-                className="h-auto w-full"
-                priority
-              />
-            </div>
-            <div className="absolute -bottom-6 -left-2 hidden max-w-xs animate-float rounded-xl border border-white/10 bg-ink-850/95 p-4 shadow-panel sm:block">
-              <p className="font-mono text-xs text-accent-soft">⌥Space → ..resize → Return</p>
-              <p className="mt-1 text-sm text-mist-300">Launcher runs immediately using your saved settings.</p>
+          <div className="mx-auto mt-14 max-w-5xl animate-fade-up" style={{ animationDelay: "100ms" }}>
+            <div className="grid items-center gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+              <LauncherDemo />
+              <div className="overflow-hidden rounded-2xl border border-white/10 shadow-panel">
+                <Image
+                  src="/screenshots/settings-library.jpg"
+                  alt="OG⌘ Commands Settings — command library"
+                  width={1200}
+                  height={700}
+                  className="h-auto w-full"
+                  priority
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="container-page py-20">
+      {/* 2. How it works */}
+      <section id="how-it-works" className="container-page scroll-mt-24 py-20 sm:py-24">
         <div className="max-w-2xl">
-          <p className="eyebrow">Why OG⌘</p>
-          <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-white">
-            Everyday file work, without the digression
-          </h2>
-          <p className="mt-4 text-mist-300">
-            Built as a native Swift menu-bar app. Commands write copies to{" "}
-            <code className="font-mono text-sm text-accent-soft">{site.macos.defaultOutput}</code>{" "}
-            by default. Configure once in Settings, then run from the typing panel.
-          </p>
+          <p className="eyebrow">How it works</p>
+          <h2 className="section-heading mt-3">Select files → Open OG⌘ → Run command</h2>
         </div>
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {benefits.map((item) => (
-            <div key={item.title} className="surface p-5">
-              <h3 className="font-display text-lg font-semibold text-white">{item.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-mist-300">{item.body}</p>
+
+        <div className="mt-12 grid gap-8 lg:grid-cols-3">
+          {steps.map((step, index) => (
+            <div key={step.title} className="animate-fade-up" style={{ animationDelay: `${index * 80}ms` }}>
+              <p className="font-mono text-xs text-accent-soft">0{index + 1}</p>
+              <h3 className="mt-3 font-display text-2xl text-white">{step.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-mist-300">{step.body}</p>
+              <div className="mt-5 overflow-hidden rounded-xl border border-white/10 bg-ink-850">
+                {step.visual ? (
+                  <Image
+                    src={step.visual}
+                    alt={step.alt}
+                    width={800}
+                    height={500}
+                    className="h-auto w-full"
+                  />
+                ) : (
+                  <div className="flex min-h-[160px] items-center justify-center px-6 py-10">
+                    <div className="w-full max-w-xs rounded-xl border border-white/10 bg-ink-900 px-4 py-3">
+                      <p className="font-mono text-sm text-white">
+                        {site.macos.hotkey}
+                        <span className="ml-2 text-mist-400">opens launcher</span>
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="container-page py-8">
-        <div className="grid gap-6 lg:grid-cols-2">
-          <div className="overflow-hidden rounded-2xl border border-white/10">
-            <Image
-              src="/screenshots/settings-compress.jpg"
-              alt="Compress settings in OG Commands"
-              width={1400}
-              height={900}
-              className="h-auto w-full"
-            />
+      {/* 3. What you can do */}
+      <section className="border-y border-white/[0.06] bg-section-fade py-20 sm:py-24">
+        <div className="container-page">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div className="max-w-xl">
+              <p className="eyebrow">What you can do</p>
+              <h2 className="section-heading mt-3">Useful work, one alias away</h2>
+            </div>
+            <Link href="/commands" className="text-sm text-accent-soft hover:underline">
+              Full command library →
+            </Link>
           </div>
-          <div className="overflow-hidden rounded-2xl border border-white/10">
-            <Image
-              src="/screenshots/app-window.png"
-              alt="OG Commands application window"
-              width={1400}
-              height={900}
-              className="h-auto w-full"
-            />
-          </div>
-        </div>
-      </section>
 
-      <section className="container-page py-20">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="eyebrow">Featured commands</p>
-            <h2 className="mt-3 font-display text-3xl font-semibold text-white">
-              What you can run today
-            </h2>
-          </div>
-          <Link href="/commands" className="text-sm text-accent-soft hover:underline">
-            Full command library →
-          </Link>
-        </div>
-        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {featured.map((command) => (
-            <CommandCard key={command.id} command={command} />
-          ))}
-        </div>
-      </section>
-
-      <section className="container-page py-16">
-        <div className="surface overflow-hidden">
-          <div className="border-b border-white/[0.06] px-6 py-8 sm:px-10">
-            <p className="eyebrow">How it works</p>
-            <h2 className="mt-3 font-display text-3xl font-semibold text-white">
-              Select → Command → Done
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-3">
-            {steps.map((step, index) => (
-              <div
-                key={step.title}
-                className="border-white/[0.06] p-6 sm:p-8 md:border-r md:last:border-r-0"
-              >
-                <p className="font-mono text-sm text-accent-soft">0{index + 1}</p>
-                <h3 className="mt-3 font-display text-xl font-semibold text-white">{step.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-mist-300">{step.body}</p>
+          <div className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2">
+            {categories.map((category) => (
+              <div key={category.title} className="border-t border-white/10 pt-6">
+                <h3 className="font-display text-2xl text-white">{category.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-mist-300">{category.body}</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {category.examples.map((alias) => (
+                    <code
+                      key={alias}
+                      className="rounded-md bg-white/[0.05] px-2 py-1 font-mono text-xs text-accent-soft"
+                    >
+                      {alias}
+                    </code>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="container-page py-16">
-        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="surface p-6 sm:p-8">
-            <p className="eyebrow">Privacy-first</p>
-            <h2 className="mt-3 font-display text-3xl font-semibold text-white">
-              Your files stay on your Mac
-            </h2>
-            <ul className="mt-6 space-y-3 text-sm leading-6 text-mist-300">
-              <li>Command execution is offline by default.</li>
-              <li>
-                <code className="font-mono text-accent-soft">..removebg</code> may download an ONNX
-                model once — only after explicit permission — then runs fully on-device.
-              </li>
-              <li>No paid background-removal APIs. No invented analytics claims.</li>
-              <li>Destructive duplicate cleanup asks before moving extras to Trash.</li>
-            </ul>
-            <Link href="/privacy" className="mt-6 inline-flex text-sm text-accent-soft hover:underline">
-              Read the privacy policy →
+      {/* 4. Pricing */}
+      <section className="container-page py-20 sm:py-24">
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="eyebrow">Pricing</p>
+          <h2 className="section-heading mt-3">Simple founding price</h2>
+          <p className="mt-4 text-mist-300">
+            One-time purchase when checkout launches. Until then, the free beta download stays
+            available.
+          </p>
+        </div>
+        <div className="mt-12">
+          <PricingCard />
+        </div>
+      </section>
+
+      {/* 5. Final CTA */}
+      <section className="container-page pb-24">
+        <div className="overflow-hidden rounded-3xl border border-white/10 bg-ink-850 px-6 py-12 text-center sm:px-12">
+          <h2 className="font-display text-3xl text-white sm:text-4xl">
+            Download OG⌘ for macOS
+          </h2>
+          <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-mist-300">
+            Version {release.version}. Requires {site.macos.minSystem}. Ad-hoc signed beta—see
+            Download for signing details.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <a href={downloadHref} className="btn-primary">
+              Download for Mac
+            </a>
+            <Link href="/docs/getting-started" className="btn-secondary">
+              Getting started
             </Link>
           </div>
-          <DownloadCTA />
         </div>
       </section>
     </>

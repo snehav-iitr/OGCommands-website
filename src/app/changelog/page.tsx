@@ -24,9 +24,9 @@ export default function ChangelogPage() {
   return (
     <div className="container-page py-16">
       <p className="eyebrow">Changelog</p>
-      <h1 className="mt-3 font-display text-4xl font-semibold text-white">Release notes</h1>
+      <h1 className="mt-3 font-display text-4xl text-white">Release notes</h1>
       <p className="mt-4 max-w-2xl text-mist-300">
-        Product version {site.macos.version}. Entries describe shipped macOS behavior — not roadmap fiction.
+        Product version {site.macos.version}. Notes for builds that actually shipped.
       </p>
 
       <div className="mt-12 space-y-8">

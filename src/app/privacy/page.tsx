@@ -11,12 +11,14 @@ export default function PrivacyPage() {
     <div className="container-page prose-docs py-16">
       <p className="eyebrow">Legal</p>
       <h1 className="!mt-3 font-display text-4xl font-semibold text-white">Privacy Policy</h1>
-      <p className="text-mist-400">Last updated: November 18, 2026</p>
+      <p className="text-mist-400">Last updated: November 19, 2026</p>
 
       <h2>Summary</h2>
       <p>
         OG⌘ Commands is designed for <strong>local processing</strong>. Your selected files are processed
-        on your Mac. This website does not provide accounts or payments.
+        on your Mac. This website does not require an account to browse docs or download the beta.
+        Paid checkout is not live yet; when it launches, payment processors may receive the information
+        needed to complete a purchase.
       </p>
 
       <h2>Files you process</h2>

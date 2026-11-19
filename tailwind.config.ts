@@ -11,24 +11,24 @@ export default {
     extend: {
       colors: {
         ink: {
-          950: "#070708",
-          900: "#0C0C0E",
-          850: "#121214",
-          800: "#18181B",
-          700: "#222226",
-          600: "#2E2E33",
+          950: "#09090B",
+          900: "#0E0E11",
+          850: "#141418",
+          800: "#1A1A1F",
+          700: "#24242B",
+          600: "#32323A",
         },
         mist: {
-          50: "#F7F7F8",
-          100: "#E8E8EC",
+          50: "#FAFAFA",
+          100: "#EDEDF0",
+          200: "#D4D4D8",
           300: "#A1A1AA",
           400: "#71717A",
         },
         accent: {
-          DEFAULT: "#F43F7A",
-          soft: "#FF6B9A",
-          muted: "rgba(244, 63, 122, 0.14)",
-          glow: "rgba(244, 63, 122, 0.35)",
+          DEFAULT: "#E11D63",
+          soft: "#F43F7A",
+          muted: "rgba(225, 29, 99, 0.12)",
         },
       },
       fontFamily: {
@@ -37,27 +37,27 @@ export default {
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       boxShadow: {
-        glow: "0 0 60px -12px rgba(244, 63, 122, 0.45)",
-        panel: "0 24px 80px -32px rgba(0,0,0,0.75)",
+        panel: "0 28px 80px -40px rgba(0,0,0,0.85)",
+        soft: "0 12px 40px -24px rgba(0,0,0,0.65)",
       },
       backgroundImage: {
-        "grid-fade":
-          "linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)",
-        "hero-radial":
-          "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(244,63,122,0.22), transparent 55%)",
+        "hero-wash":
+          "radial-gradient(ellipse 90% 55% at 70% -10%, rgba(225,29,99,0.16), transparent 55%), radial-gradient(ellipse 60% 40% at 10% 30%, rgba(255,255,255,0.04), transparent 50%)",
+        "section-fade":
+          "linear-gradient(180deg, transparent, rgba(255,255,255,0.02), transparent)",
       },
       animation: {
-        "fade-up": "fadeUp 0.7s ease-out both",
-        float: "float 8s ease-in-out infinite",
+        "fade-up": "fadeUp 0.65s ease-out both",
+        "caret-blink": "caretBlink 1s step-end infinite",
       },
       keyframes: {
         fadeUp: {
-          "0%": { opacity: "0", transform: "translateY(16px)" },
+          "0%": { opacity: "0", transform: "translateY(14px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-8px)" },
+        caretBlink: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0" },
         },
       },
     },

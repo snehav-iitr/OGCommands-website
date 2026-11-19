@@ -8,18 +8,24 @@ import { site } from "@/lib/site";
 import clsx from "clsx";
 
 const links = [
+  { href: "/", label: "Home" },
   { href: "/commands", label: "Commands" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/docs", label: "Docs" },
   { href: "/download", label: "Download" },
-  { href: "/changelog", label: "Changelog" },
 ];
+
+function linkIsActive(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-ink-950/75 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-ink-950/80 backdrop-blur-xl">
       <div className="container-page flex h-16 items-center justify-between gap-4">
         <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
           <Image
@@ -33,15 +39,15 @@ export function SiteHeader() {
           <span className="sr-only">{site.name}</span>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-0.5 md:flex" aria-label="Primary">
           {links.map((link) => {
-            const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
+            const active = linkIsActive(pathname, link.href);
             return (
               <Link
                 key={link.href}
                 href={link.href}
                 className={clsx(
-                  "rounded-full px-3.5 py-1.5 text-sm transition",
+                  "rounded-lg px-2.5 py-1.5 text-sm transition lg:px-3",
                   active
                     ? "bg-white/10 text-white"
                     : "text-mist-300 hover:bg-white/5 hover:text-white"
@@ -55,13 +61,13 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-3 md:flex">
           <Link href="/download" className="btn-primary">
-            Download for macOS
+            Download for Mac
           </Link>
         </div>
 
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 md:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           onClick={() => setOpen((v) => !v)}
@@ -77,19 +83,19 @@ export function SiteHeader() {
 
       {open ? (
         <div id="mobile-nav" className="border-t border-white/10 px-5 py-4 md:hidden">
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-1">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded-lg px-3 py-2 text-sm text-mist-100 hover:bg-white/5"
+                className="rounded-lg px-3 py-2.5 text-sm text-mist-100 hover:bg-white/5"
                 onClick={() => setOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
-            <Link href="/download" className="btn-primary mt-2" onClick={() => setOpen(false)}>
-              Download for macOS
+            <Link href="/download" className="btn-primary mt-3" onClick={() => setOpen(false)}>
+              Download for Mac
             </Link>
           </div>
         </div>

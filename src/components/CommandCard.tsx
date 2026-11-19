@@ -6,14 +6,14 @@ export function CommandCard({ command }: { command: CommandDoc }) {
   return (
     <Link
       href={`/commands/${command.id}`}
-      className="surface group block p-5 transition hover:-translate-y-0.5 hover:border-accent/30 hover:shadow-glow"
+      className="surface group block p-5 transition hover:border-white/16 hover:bg-ink-800/80"
     >
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-xs uppercase tracking-[0.14em] text-mist-400">
             {categoryLabels[command.category]}
           </p>
-          <h3 className="mt-2 font-display text-lg font-semibold text-white group-hover:text-accent-soft">
+          <h3 className="mt-2 font-display text-xl text-white group-hover:text-accent-soft">
             {command.name}
           </h3>
         </div>
